@@ -1,10 +1,43 @@
-## 📂 Project Structure
+# PoGo Commander Hub
+
+Локальний хаб для Pokémon GO: карта часових поясів під Spotlight Hour, Community Day і денні вікна, календар івентів і особистий декс шайні, фонів та костюмів.
+
+## Запуск
+
+Сторінка завантажує `backgrounds.json` і розклад, тому її треба відкривати через локальний сервер, а не як файл.
+
+```bash
+npx serve .
+```
+
+Відкрий адресу, яку покаже сервер.
+
+## Можливості
+
+- Карта хабів із місцевим часом і підсвіткою міст, де вибране вікно йде просто зараз
+- Клік по карті або хабу копіює координати
+- Календар подій (LeekDuck / ScrapedDuck) з фільтрами за статусом і типом
+- In-person івенти (Wild Area, GO Tour, Safari, Night Out) окремим списком і окремими маркерами на карті
+- Декс у `localStorage`: кілька акаунтів, шайні, фон, костюм, розмір, експорт і імпорт JSON
+
+Мова інтерфейсу: українська, англійська, російська. Вибір зберігається в браузері.
+
+## Дані
+
+- Розклад: [ScrapedDuck events.json](https://github.com/bigfoott/ScrapedDuck)
+- Спрайти й номери дексу: [PokeAPI](https://pokeapi.co/)
+- Карта: Leaflet і Esri Dark Gray Canvas
+- Власні локальні івенти: `data.js` (`LOCAL_IN_PERSON_EVENTS`)
+- Підказки фонів для дексу: `backgrounds.json`
+
+## Структура
 
 ```text
 pogo-hub/
-├── index.html          # Application entry point & CDN integrations
-├── app.js              # Core React components (State, MapTab, NewsTab, DexTab)
-├── data.js             # Global hubs, timezone offsets, and localization strings
-├── backgrounds.json    # Presets for special location backgrounds
-├── style.css           # Custom styles, animations & map marker effects
-└── README.md           # Documentation
+├── index.html          # Точка входу й CDN
+├── app.js              # React-компоненти
+├── data.js             # Хаби, міста, локальні івенти, переклади
+├── backgrounds.json    # Підказки назв фонів
+├── style.css           # Темна тема, карта, пульсація маркерів
+└── README.md
+```

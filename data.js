@@ -49,6 +49,41 @@ window.LOCAL_IN_PERSON_EVENTS = [
     ]
   }
 ];
+
+// Міста для прив'язки in-person івентів до карти. Довші ключі перевіряються першими.
+window.CITY_COORDS = [
+  { keys: ["mexico city"], label: "Mexico City", lat: 19.4326, lng: -99.1332, country: "Mexico 🇲🇽" },
+  { keys: ["los angeles"], label: "Los Angeles", lat: 34.0522, lng: -118.2437, country: "USA 🇺🇸" },
+  { keys: ["san francisco"], label: "San Francisco", lat: 37.8087, lng: -122.4098, country: "USA 🇺🇸" },
+  { keys: ["new york"], label: "New York", lat: 40.7829, lng: -73.9654, country: "USA 🇺🇸" },
+  { keys: ["sao paulo", "são paulo"], label: "São Paulo", lat: -23.5874, lng: -46.6576, country: "Brazil 🇧🇷" },
+  { keys: ["kaohsiung"], label: "Kaohsiung", lat: 22.6273, lng: 120.3014, country: "Taiwan 🇹🇼" },
+  { keys: ["hong kong"], label: "Hong Kong", lat: 22.3193, lng: 114.1694, country: "Hong Kong 🇭🇰" },
+  { keys: ["singapore"], label: "Singapore", lat: 1.3521, lng: 103.8198, country: "Singapore 🇸🇬" },
+  { keys: ["tainan"], label: "Tainan", lat: 22.9997, lng: 120.2270, country: "Taiwan 🇹🇼" },
+  { keys: ["taipei"], label: "Taipei", lat: 25.033, lng: 121.5654, country: "Taiwan 🇹🇼" },
+  { keys: ["incheon"], label: "Incheon", lat: 37.4563, lng: 126.7052, country: "South Korea 🇰🇷" },
+  { keys: ["seoul"], label: "Seoul", lat: 37.5665, lng: 126.978, country: "South Korea 🇰🇷" },
+  { keys: ["fukuoka"], label: "Fukuoka", lat: 33.5902, lng: 130.4017, country: "Japan 🇯🇵" },
+  { keys: ["sendai"], label: "Sendai", lat: 38.2682, lng: 140.8694, country: "Japan 🇯🇵" },
+  { keys: ["okinawa"], label: "Okinawa", lat: 26.2124, lng: 127.6809, country: "Japan 🇯🇵" },
+  { keys: ["osaka"], label: "Osaka", lat: 34.6937, lng: 135.5023, country: "Japan 🇯🇵" },
+  { keys: ["tokyo"], label: "Tokyo", lat: 35.6762, lng: 139.6503, country: "Japan 🇯🇵" },
+  { keys: ["auckland"], label: "Auckland", lat: -36.8485, lng: 174.7633, country: "New Zealand 🇳🇿" },
+  { keys: ["wellington"], label: "Wellington", lat: -41.2866, lng: 174.7756, country: "New Zealand 🇳🇿" },
+  { keys: ["honolulu"], label: "Honolulu", lat: 21.3069, lng: -157.8583, country: "USA 🇺🇸" },
+  { keys: ["barcelona"], label: "Barcelona", lat: 41.3879, lng: 2.1699, country: "Spain 🇪🇸" },
+  { keys: ["zaragoza"], label: "Zaragoza", lat: 41.6561, lng: -0.8773, country: "Spain 🇪🇸" },
+  { keys: ["sydney"], label: "Sydney", lat: -33.8568, lng: 151.2153, country: "Australia 🇦🇺" },
+  { keys: ["jakarta"], label: "Jakarta", lat: -6.2088, lng: 106.8456, country: "Indonesia 🇮🇩" },
+  { keys: ["london"], label: "London", lat: 51.5074, lng: -0.1278, country: "UK 🇬🇧" },
+  { keys: ["madrid"], label: "Madrid", lat: 40.4168, lng: -3.7038, country: "Spain 🇪🇸" },
+  { keys: ["athens"], label: "Athens", lat: 37.9753, lng: 23.7361, country: "Greece 🇬🇷" },
+  { keys: ["berlin"], label: "Berlin", lat: 52.52, lng: 13.405, country: "Germany 🇩🇪" },
+  { keys: ["paris"], label: "Paris", lat: 48.8566, lng: 2.3522, country: "France 🇫🇷" },
+  { keys: ["dubai"], label: "Dubai", lat: 25.1972, lng: 55.2744, country: "UAE 🇦🇪" }
+];
+
 // Словник перекладів для локалізації (UA, EN, RU)
 window.TRANSLATIONS = {
   ua: {
@@ -108,7 +143,27 @@ window.TRANSLATIONS = {
     newAccPlaceholder: "Новий акаунт...",
     allFilter: "Всі",
     bgOnlyFilter: "Тільки з Background",
-    searchPlaceholder: "Пошук (ім'я, bg, нотатка)..."
+    searchPlaceholder: "Пошук (ім'я, №, фон, скін)...",
+    shinyVersion: "✨ Шайні версія",
+    normalVersion: "Звичайна версія",
+    hasBgLabel: "Має фон (Location / Special Card)",
+    bgPlaceholder: "Назва фону (напр. Seoul, Wormhole)...",
+    hasCostumeLabel: "Має костюм / скін",
+    costumePlaceholder: "Назва скіна (напр. Hanbok, Goggles)...",
+    sizeLabel: "Розмір",
+    sizeNone: "Звичайний",
+    accountExists: "Акаунт з таким ніком вже існує",
+    needOneAccount: "Має залишитись хоча б один акаунт",
+    deleteAccountConfirm: "Видалити акаунт «{name}» і всіх його покемонів?",
+    deleteInstance: "Видалити цей екземпляр",
+    emptyDex: "Поки порожньо. Додай першого покемона зліва.",
+    newsError: "Не вдалося завантажити розклад. Локальні івенти зі списку нижче лишаються доступними.",
+    copiedFail: "Не вдалося скопіювати",
+    openSource: "Деталі",
+    exportDex: "Експорт JSON",
+    importDex: "Імпорт JSON",
+    importError: "Файл не схожий на експорт дексу",
+    importConfirm: "Замінити поточний декс даними з файлу?"
   },
 
   en: {
@@ -165,7 +220,27 @@ window.TRANSLATIONS = {
     newAccPlaceholder: "New account...",
     allFilter: "All",
     bgOnlyFilter: "Background Only",
-    searchPlaceholder: "Search (name, bg, note)..."
+    searchPlaceholder: "Search (name, #, bg, costume)...",
+    shinyVersion: "✨ Shiny",
+    normalVersion: "Regular",
+    hasBgLabel: "Has a background (Location / Special Card)",
+    bgPlaceholder: "Background name (e.g. Seoul, Wormhole)...",
+    hasCostumeLabel: "Has a costume / skin",
+    costumePlaceholder: "Costume name (e.g. Hanbok, Goggles)...",
+    sizeLabel: "Size",
+    sizeNone: "Regular",
+    accountExists: "An account with this name already exists",
+    needOneAccount: "Keep at least one account",
+    deleteAccountConfirm: "Delete account “{name}” and all of its Pokémon?",
+    deleteInstance: "Delete this entry",
+    emptyDex: "Nothing here yet. Add a Pokémon from the form.",
+    newsError: "Could not load the schedule. Saved in-person events are still available.",
+    copiedFail: "Could not copy",
+    openSource: "Details",
+    exportDex: "Export JSON",
+    importDex: "Import JSON",
+    importError: "This file is not a dex export",
+    importConfirm: "Replace the current dex with this file?"
   },
 
   ru: {
@@ -222,6 +297,26 @@ window.TRANSLATIONS = {
     newAccPlaceholder: "Новый аккаунт...",
     allFilter: "Все",
     bgOnlyFilter: "Только с Background",
-    searchPlaceholder: "Поиск (имя, bg, заметка)..."
+    searchPlaceholder: "Поиск (имя, №, фон, скин)...",
+    shinyVersion: "✨ Шайни",
+    normalVersion: "Обычная версия",
+    hasBgLabel: "Есть фон (Location / Special Card)",
+    bgPlaceholder: "Название фона (напр. Seoul, Wormhole)...",
+    hasCostumeLabel: "Есть костюм / скин",
+    costumePlaceholder: "Название скина (напр. Hanbok, Goggles)...",
+    sizeLabel: "Размер",
+    sizeNone: "Обычный",
+    accountExists: "Аккаунт с таким ником уже существует",
+    needOneAccount: "Должен остаться хотя бы один аккаунт",
+    deleteAccountConfirm: "Удалить аккаунт «{name}» и всех его покемонов?",
+    deleteInstance: "Удалить эту запись",
+    emptyDex: "Пока пусто. Добавь первого покемона слева.",
+    newsError: "Не удалось загрузить расписание. Сохранённые локальные ивенты остаются доступны.",
+    copiedFail: "Не удалось скопировать",
+    openSource: "Подробнее",
+    exportDex: "Экспорт JSON",
+    importDex: "Импорт JSON",
+    importError: "Файл не похож на экспорт декса",
+    importConfirm: "Заменить текущий декс данными из файла?"
   }
 };
